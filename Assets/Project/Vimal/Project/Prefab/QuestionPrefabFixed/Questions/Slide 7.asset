@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01fd2d64a9249049aaa77d5c12a82fe, type: 3}
+  m_Name: Slide 7
+  m_EditorClassIdentifier: 
+  questionText: 7. Bridge wire should be of the uniform area of cross-section because
+    we assume that resistance is proportional to the length of the wire while deriving
+    the formula, which will be true only when the wire is of the uniform cross-sectional
+    area throughout.
+  referenceImage: {fileID: 0}
+  explanationText: "Applying balanced Wheatstone bridge condition:\r\n\r\nP / Q =
+    Resistance (Resistance (AJ)) / Resistance (Resistance (JB))\r\n      (as uniform
+    wire)\r\n\r\nP / Q = AJ / JB = l\u2081 / l\u2082"
+  options:
+  - True
+  - False
+  - Cannot be determined
+  - Both True and False
+  correctOptionIndex: 0

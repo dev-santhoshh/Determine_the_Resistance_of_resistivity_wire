@@ -1,0 +1,2 @@
+D:\Unity\Determine_the_resistance_of_wire\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+D:\Unity\Determine_the_resistance_of_wire\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

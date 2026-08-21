@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01fd2d64a9249049aaa77d5c12a82fe, type: 3}
+  m_Name: Slide 6
+  m_EditorClassIdentifier: 
+  questionText: 6. The expression of Least Count of the screw gauge is given by
+  referenceImage: {fileID: 0}
+  explanationText: Least count is defined as pitch of the screw gauge divided by
+    the number of divisions on a circular scale.
+  options:
+  - 'Least count = Pitch of Screw Gauge/Number of divisions on Linear Scale  '
+  - 'Least count = Number of divisions on Circular Scale/Pitch of Screw Gauge '
+  - 'Least count = Pitch of Screw Gauge/Number of divisions on Circular Scale '
+  - None of the above
+  correctOptionIndex: 2
