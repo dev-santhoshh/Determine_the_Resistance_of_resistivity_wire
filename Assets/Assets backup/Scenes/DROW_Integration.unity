@@ -3310,7 +3310,7 @@ PrefabInstance:
         a given wire using a metre bridge.
 
         First, select the screw gauge
-        to find the daimeter of the wire'
+        to find the diameter of the wire'
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -6256,8 +6256,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6049478105117771291}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.11428338, y: 0.015262065, z: -0.0017559079, w: 0.9933294}
-  m_LocalPosition: {x: 0.007, y: -0.843, z: -0.076}
+  m_LocalRotation: {x: -0.080784455, y: 0.013996242, z: -0.010275527, w: 0.99658036}
+  m_LocalPosition: {x: 0.06543079, y: -0.5136394, z: 0.2740137}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -51470,7 +51470,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4180913141592864024}
   m_LocalRotation: {x: 0.19736807, y: 0.6790024, z: -0.19736873, w: 0.67900455}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.078}
   m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -51478,7 +51478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 32.416, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.089}
   m_SizeDelta: {x: 18, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!33 &2895439523369748719
@@ -53467,13 +53467,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988764656606109066}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.115602516, y: 0.6961278, z: -0.10382165, w: 0.70090175}
-  m_LocalPosition: {x: -1.73, y: 1.403, z: -0.016}
+  m_LocalRotation: {x: 0.1335482, y: 0.6929435, z: -0.13297601, w: 0.695925}
+  m_LocalPosition: {x: -1.259, y: 1.504, z: -0.055}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 382567085040816582}
-  m_LocalEulerAnglesHint: {x: 17.854, y: 89.754, z: 0.928}
+  m_LocalEulerAnglesHint: {x: 21.726, y: 89.754, z: 0}
 --- !u!23 &3050812299045260124
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77733,7 +77733,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5503480628889075149}
   m_LocalRotation: {x: 0.19736807, y: 0.6790024, z: -0.19736873, w: 0.67900455}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.07800007}
   m_LocalScale: {x: 0.01, y: 0.009999999, z: 0.009999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -77741,7 +77741,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 32.416, y: 90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -0.08899999}
   m_SizeDelta: {x: 17, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4667010287148353174
