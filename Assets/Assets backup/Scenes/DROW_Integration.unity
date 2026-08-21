@@ -3606,7 +3606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Press the Button and place the wire inside the anvil and spinle '
+      value: 'Press the Button and place the wire inside the anvil and spindle '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -36771,8 +36771,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876913626374303639}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.055972286, y: 0.10726387, z: -0.051171217, w: 0.99133396}
-  m_LocalPosition: {x: -0.7220001, y: -0.12799995, z: 0.86300015}
+  m_LocalRotation: {x: 0.05597224, y: 0.10726383, z: -0.0511712, w: 0.9913341}
+  m_LocalPosition: {x: -0.6614434, y: -0.13387345, z: 0.8490493}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53467,8 +53467,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988764656606109066}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1335482, y: 0.6929435, z: -0.13297601, w: 0.695925}
-  m_LocalPosition: {x: -1.259, y: 1.504, z: -0.055}
+  m_LocalRotation: {x: 0.2171528, y: 0.737047, z: -0.23369373, w: 0.5958135}
+  m_LocalPosition: {x: -0.599, y: 1.529, z: 0.698}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
