@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -29,7 +30,7 @@ public class MultiCheckDialerUI : MonoBehaviour
     public List<GameObject> meanWrong;
 
     // =====================================================
-    // 🔥 NEW: Per-row UnityEvents fired when that row's value is confirmed correct
+    // 🔥 Per-row UnityEvents fired when that row's value is confirmed correct
     // Size these lists the same length as s1Fields / s2Fields / meanFields (index-matched)
     // =====================================================
     [Header("PER-ROW CORRECT EVENTS")]
@@ -91,6 +92,18 @@ public class MultiCheckDialerUI : MonoBehaviour
     const int MAX_WRONG = 3;
 
     // =====================================================
+    // 🔥 RELIABLE SELECTION TRACKING
+    // TMP_InputField.onSelect can fail to fire in some cases (e.g. a field
+    // becomes interactable the same frame it's clicked, or objects are
+    // reused/duplicated across slides). Instead of depending only on
+    // onSelect, we also poll Unity's actual EventSystem selection every
+    // frame and resync activeField/activeColumn/row indices from it.
+    // This guarantees the numpad always writes into whatever field is
+    // truly selected on screen, even if onSelect missed firing.
+    // =====================================================
+    GameObject lastPolledSelection;
+
+    // =====================================================
     // Page Unlock Reporting (from earlier step)
     // =====================================================
     [Header("Page Unlock Reporting")]
@@ -121,18 +134,21 @@ public class MultiCheckDialerUI : MonoBehaviour
     void Start()
     {
         LockAllFieldsInitially();
-        int rows = meanFields.Count;
 
-        storedS1 = new float[rows];
-        storedS2 = new float[rows];
-        storedMean = new float[rows];
+        // FIX: size each stored-value array off its OWN field list length,
+        // not off meanFields.Count for everything. Resistance/S1/S2/Mean
+        // lists can legitimately have different counts (e.g. 6 resistance
+        // rows vs 5 S1/S2/Mean rows), so sharing one size caused
+        // IndexOutOfRangeException when a larger list's index was used
+        // to write into a smaller array.
+        storedS1 = new float[Mathf.Max(s1Fields.Count, 1)];
+        storedS2 = new float[Mathf.Max(s2Fields.Count, 1)];
+        storedMean = new float[Mathf.Max(meanFields.Count, 1)];
 
-        for (int i = 0; i < rows; i++)
-        {
-            storedS1[i] = float.NaN;
-            storedS2[i] = float.NaN;
-            storedMean[i] = float.NaN;
-        }
+        for (int i = 0; i < storedS1.Length; i++) storedS1[i] = float.NaN;
+        for (int i = 0; i < storedS2.Length; i++) storedS2[i] = float.NaN;
+        for (int i = 0; i < storedMean.Length; i++) storedMean[i] = float.NaN;
+
         autoFillButton.gameObject.SetActive(false);
         autoFillButton.onClick.AddListener(OnAutoFillPressed);
 
@@ -157,6 +173,83 @@ public class MultiCheckDialerUI : MonoBehaviour
         checkButton.onClick.AddListener(OnCheckPressed);
         retryButton.onClick.AddListener(OnRetryPress);
         retryButton.gameObject.SetActive(false);
+    }
+
+    // ===============================
+    void Update()
+    {
+        PollSelectionFallback();
+    }
+
+    // Resync activeField from Unity's real UI selection every frame.
+    // Only acts when the selection actually changed, and only for fields
+    // that belong to this controller's lists, so it never interferes with
+    // totalMeanField/finalResultField (handled separately) or unrelated UI.
+    void PollSelectionFallback()
+    {
+        if (EventSystem.current == null) return;
+
+        GameObject selected = EventSystem.current.currentSelectedGameObject;
+        if (selected == lastPolledSelection) return; // nothing changed
+        lastPolledSelection = selected;
+
+        if (selected == null) return;
+
+        TMP_InputField field = selected.GetComponent<TMP_InputField>();
+        if (field == null) return;
+
+        // Skip fields handled by their own dedicated onSelect listeners
+        if (field == totalMeanField || field == finalResultField) return;
+
+        if (!field.interactable) return;
+
+        // Already tracking this exact field — nothing to do
+        if (activeField == field) return;
+
+        int foundColumn;
+        int foundRow;
+
+        if (!TryFindField(field, out foundColumn, out foundRow))
+            return; // not one of our managed fields
+
+        if (lastCorrectImage != null)
+            lastCorrectImage.SetActive(false);
+
+        activeField = field;
+        activeColumn = foundColumn;
+
+        if (foundColumn == 2)
+            s1Row = foundRow;
+        else if (foundColumn == 3)
+            s2Row = foundRow;
+        else
+            currentRow = foundRow;
+
+        lastActiveField = activeField;
+        lastCorrectImage = GetCorrectImage(foundRow, foundColumn);
+    }
+
+    // Looks up which list/column/row a given TMP_InputField belongs to
+    bool TryFindField(TMP_InputField field, out int column, out int row)
+    {
+        int idx = resistanceFields.IndexOf(field);
+        if (idx >= 0) { column = 0; row = idx; return true; }
+
+        idx = lengthFields.IndexOf(field);
+        if (idx >= 0) { column = 1; row = idx; return true; }
+
+        idx = s1Fields.IndexOf(field);
+        if (idx >= 0) { column = 2; row = idx; return true; }
+
+        idx = s2Fields.IndexOf(field);
+        if (idx >= 0) { column = 3; row = idx; return true; }
+
+        idx = meanFields.IndexOf(field);
+        if (idx >= 0) { column = 4; row = idx; return true; }
+
+        column = -1;
+        row = -1;
+        return false;
     }
 
     // ======================= NUMBER PAD =======================
@@ -267,13 +360,24 @@ public class MultiCheckDialerUI : MonoBehaviour
                 break;
 
             case 2: // S1
-                correct = SafeCheck(s1Fields, s1Correct, s1Wrong, row, S1);
-                if (correct)
                 {
-                    storedS1[row] = S1r;
-                    FireRowEvent(onS1RowCorrect, row); // 🔥 NEW
+                    // FIX: use s1Row (the index within s1Fields), not the
+                    // stale currentRow left over from the last Resistance/
+                    // Length/Mean field selected. Using currentRow here
+                    // caused IndexOutOfRangeException whenever the field
+                    // lists had different lengths.
+                    int s1Index = s1Row;
+
+                    correct = SafeCheck(s1Fields, s1Correct, s1Wrong, s1Index, S1);
+
+                    if (correct)
+                    {
+                        storedS1[s1Index] = S1r;
+                        FireRowEvent(onS1RowCorrect, s1Index);
+                    }
+
+                    break;
                 }
-                break;
 
             case 3: // S2
                 {
@@ -284,13 +388,16 @@ public class MultiCheckDialerUI : MonoBehaviour
                     if (correct)
                     {
                         storedS2[s2Index] = S2r;
-                        FireRowEvent(onS2RowCorrect, s2Index); // 🔥 NEW
+                        FireRowEvent(onS2RowCorrect, s2Index);
                     }
 
                     break;
                 }
 
             case 4: // Mean
+                if (row >= storedS1.Length || row >= storedS2.Length)
+                    return;
+
                 if (float.IsNaN(storedS1[row]) || float.IsNaN(storedS2[row]))
                     return;
 
@@ -303,12 +410,12 @@ public class MultiCheckDialerUI : MonoBehaviour
                 correct = SafeCheck(meanFields, meanCorrect, meanWrong, row, meanExpected);
 
                 if (correct)
-                    FireRowEvent(onMeanRowCorrect, row); // 🔥 NEW
+                    FireRowEvent(onMeanRowCorrect, row);
 
                 break;
         }
 
-        if (correct)
+        if (correct && activeColumn == 4 && row < storedMean.Length)
             storedMean[row] = Mean;
     }
 
@@ -322,7 +429,7 @@ public class MultiCheckDialerUI : MonoBehaviour
     // ===============================
     protected bool SafeCheck(List<TMP_InputField> fields, List<GameObject> ok, List<GameObject> bad, int i, float expected)
     {
-        if (i >= fields.Count || i >= ok.Count || i >= bad.Count)
+        if (i < 0 || i >= fields.Count || i >= ok.Count || i >= bad.Count)
             return false;
 
         return CheckOne(fields[i], ok[i], bad[i], expected);
@@ -408,8 +515,6 @@ public class MultiCheckDialerUI : MonoBehaviour
         if (activeField == finalResultField)
             return storedTotalMean;
 
-        if (currentRow < 0) return float.NaN;
-
         float R = resistanceBox.Resistance;
         float L = S_Rightgap.balanceLength;
 
@@ -420,11 +525,17 @@ public class MultiCheckDialerUI : MonoBehaviour
 
         switch (activeColumn)
         {
-            case 0: return R;
-            case 1: return L;
-            case 2: return S1r;
-            case 3: return S2r;
+            case 0:
+                return R;
+            case 1:
+                return L;
+            case 2: // FIX: use s1Row, matches the field actually selected
+                return S1r;
+            case 3: // FIX: use s2Row, matches the field actually selected
+                return S2r;
             case 4:
+                if (currentRow < 0 || currentRow >= storedS1.Length || currentRow >= storedS2.Length)
+                    return float.NaN;
                 if (float.IsNaN(storedS1[currentRow]) || float.IsNaN(storedS2[currentRow]))
                     return float.NaN;
 
@@ -459,7 +570,8 @@ public class MultiCheckDialerUI : MonoBehaviour
         float sum = 0f;
         int count = 0;
 
-        for (int i = 0; i < storedS1.Length; i++)
+        int len = Mathf.Min(storedS1.Length, storedS2.Length);
+        for (int i = 0; i < len; i++)
         {
             if (float.IsNaN(storedS1[i]) || float.IsNaN(storedS2[i]))
                 continue;
@@ -510,7 +622,7 @@ public class MultiCheckDialerUI : MonoBehaviour
             PlayCorrectSFX();
             finalResultField.interactable = true;
 
-            onTotalMeanCorrectEvent?.Invoke(); // 🔥 NEW
+            onTotalMeanCorrectEvent?.Invoke();
             ReportCompleted(totalMeanSlideID);
         }
         else
@@ -575,11 +687,11 @@ public class MultiCheckDialerUI : MonoBehaviour
     {
         switch (activeColumn)
         {
-            case 0: return resistanceWrong[currentRow];
-            case 1: return lengthWrong[currentRow];
-            case 2: return s1Wrong[s1Row];
-            case 3: return s2Wrong[s2Row];
-            case 4: return meanWrong[currentRow];
+            case 0: return currentRow >= 0 && currentRow < resistanceWrong.Count ? resistanceWrong[currentRow] : null;
+            case 1: return currentRow >= 0 && currentRow < lengthWrong.Count ? lengthWrong[currentRow] : null;
+            case 2: return s1Row >= 0 && s1Row < s1Wrong.Count ? s1Wrong[s1Row] : null;
+            case 3: return s2Row >= 0 && s2Row < s2Wrong.Count ? s2Wrong[s2Row] : null;
+            case 4: return currentRow >= 0 && currentRow < meanWrong.Count ? meanWrong[currentRow] : null;
         }
         return null;
     }
@@ -615,7 +727,7 @@ public class MultiCheckDialerUI : MonoBehaviour
             finalResultField.interactable = false;
             PlayCorrectSFX();
 
-            onFinalResultCorrectEvent?.Invoke(); // 🔥 NEW
+            onFinalResultCorrectEvent?.Invoke();
             ReportCompleted(finalResultSlideID);
         }
         else
@@ -690,6 +802,38 @@ public class MultiCheckDialerUI : MonoBehaviour
         resistanceFields[0].interactable = true;
     }
 
+    // =====================================================
+    // SLIDE-DRIVEN UNLOCK
+    // Hook this up to your PageNavigationController's OnPageChanged event.
+    // Maps a slide/page index directly to a specific InputField that should
+    // become interactable when that slide is reached — independent of the
+    // answer-correctness chain. Use this when a field must unlock the moment
+    // its slide appears, regardless of what row/column logic would say.
+    // =====================================================
+    [System.Serializable]
+    public class SlideUnlockEntry
+    {
+        public int pageIndex;
+        public TMP_InputField fieldToUnlock;
+    }
+
+    [Header("SLIDE UNLOCK MAP")]
+    [Tooltip("e.g. pageIndex 57 -> resistanceFields[6] (InputField 18), 62 -> [7] (21), etc.")]
+    public List<SlideUnlockEntry> slideUnlockMap;
+
+    public void OnPageChanged(int pageIndex)
+    {
+        if (slideUnlockMap == null) return;
+
+        foreach (var entry in slideUnlockMap)
+        {
+            if (entry.pageIndex == pageIndex && entry.fieldToUnlock != null)
+            {
+                entry.fieldToUnlock.interactable = true;
+            }
+        }
+    }
+
     void UnlockNextField()
     {
         int r = currentRow;
@@ -697,28 +841,35 @@ public class MultiCheckDialerUI : MonoBehaviour
         switch (activeColumn)
         {
             case 0:
-                lengthFields[r].interactable = true;
+                if (r < lengthFields.Count)
+                    lengthFields[r].interactable = true;
                 break;
 
             case 1:
-                if (r < 5)
+                if (r < 5 && r < s1Fields.Count)
                     s1Fields[r].interactable = true;
-                else
+                else if (r - 5 >= 0 && r - 5 < s2Fields.Count)
                     s2Fields[r - 5].interactable = true;
                 break;
 
             case 2:
-                if (r < 4)
-                    resistanceFields[r + 1].interactable = true;
-                else
+                if (s1Row < 4 && s1Row + 1 < resistanceFields.Count)
+                    resistanceFields[s1Row + 1].interactable = true;
+                else if (resistanceFields.Count > 5)
                     resistanceFields[5].interactable = true;
                 break;
 
             case 3:
                 if (s2Row < s2Fields.Count - 1)
-                    resistanceFields[currentRow + 1].interactable = true;
-                else
+                {
+                    int nextResistanceIndex = s2Row + 1 + 5; // S2 rows map to resistance rows 5-9
+                    if (nextResistanceIndex < resistanceFields.Count)
+                        resistanceFields[nextResistanceIndex].interactable = true;
+                }
+                else if (meanFields.Count > 0)
+                {
                     meanFields[0].interactable = true;
+                }
                 break;
 
             case 4:
