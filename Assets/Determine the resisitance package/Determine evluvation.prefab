@@ -408,6 +408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 0.5
   targetPosition: {fileID: 5169930708317125609}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &6324505538331993263
@@ -568,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 5
   targetPosition: {fileID: 1512842373424877251}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &735232567268207853
@@ -1102,6 +1104,9 @@ MonoBehaviour:
         m_Calls: []
     lockTwoButtons: 0
   cheatButtons: 0
+  audioSource: {fileID: 0}
+  nextButtonSound: {fileID: 0}
+  backButtonSound: {fileID: 0}
 --- !u!1 &2925578211987005173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 0.2
   targetPosition: {fileID: 4992668215310722837}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &6926813863506383051
@@ -2077,6 +2083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 1
   targetPosition: {fileID: 6017031483510583972}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &1581167044500355950
@@ -2656,6 +2663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 0.5
   targetPosition: {fileID: 2331325597106733270}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &5503159087920025710
@@ -2989,6 +2997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 2
   targetPosition: {fileID: 7515235811575166121}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &6920082648289278908
@@ -3180,6 +3189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 0.1
   targetPosition: {fileID: 9208013226099391965}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &803741882249523907
@@ -3508,6 +3518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 2
   targetPosition: {fileID: 5014833793554778789}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &4134040564019683261
@@ -4211,6 +4222,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3180392784083725529}
     m_Modifications:
+    - target: {fileID: 82581154667960624, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1266885313942635348, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4229,18 +4244,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1392714993087192897, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1392714993087192897, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1392714993087192897, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 263.78766
       objectReference: {fileID: 0}
     - target: {fileID: 1392714993087192897, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1986854461059923360, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2195035310991186494, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
@@ -4361,18 +4380,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4434845959272631780, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4434845959272631780, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4434845959272631780, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 263.78766
       objectReference: {fileID: 0}
     - target: {fileID: 4434845959272631780, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700445967897340606, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4793995079910991141, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
@@ -4390,6 +4413,10 @@ PrefabInstance:
     - target: {fileID: 4793995079910991141, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SlideController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8701424927858334480, guid: e12282d9cb1d0c44fa7b13d62d6755b2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5066,6 +5093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ValueObject
   value: 10
   targetPosition: {fileID: 5891880275389452076}
+  moveDuration: 0.5
   originalPos: {x: 0, y: 0, z: 0}
   originalRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!65 &3696458758393293806
