@@ -1,0 +1,10 @@
+# ninja log v5
+0	8158	8095354474033625	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	f7939c3fc825caab
+1094	8165	8095354484599697	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	5bd70dc21e185144
+2162	8167	8095354495146125	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	879cfc1e985178aa
+3066	8169	8095354501409992	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	1767db6a13fe8a17
+3972	8171	8095354510878687	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	52dc05c0f06d9e34
+4971	8174	8095354523156718	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	4e0e646555e18650
+5967	8176	8095354533211819	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	b7bce89dc868d62b
+7070	8899	8095354543103793	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	1bf22e966087c737
+8899	10942	8095354563476739	E:/MH Cognition/GitHub-Projects/Determine_the_Resistance_of_resistivity_wire/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/6a681b47/obj/arm64-v8a/libgame.so	8eb7ae46908ff26a

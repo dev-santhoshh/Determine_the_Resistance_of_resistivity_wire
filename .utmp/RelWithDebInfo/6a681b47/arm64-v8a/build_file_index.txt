@@ -1,0 +1,2 @@
+E:\MH Cognition\GitHub-Projects\Determine_the_Resistance_of_resistivity_wire\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+E:\MH Cognition\GitHub-Projects\Determine_the_Resistance_of_resistivity_wire\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt
