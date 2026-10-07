@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -348,7 +348,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slider outside and press the button and change the wire position  '
+      value: Move the slider to move the spindle back, then press the button to rotate
+        the wire so the next reading is taken in the perpendicular direction.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -470,8 +471,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Move the screw forward by rotating the ratchet R till the wire is gently
-        gripped between the screw and the stud.
+      value: Rotate the ratchet to move the spindle forward until it just touches
+        the wire.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -593,8 +594,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Move the screw forward by rotating the ratchet R till the wire is gently
-        gripped between the screw and the stud.
+      value: Move the spindle forward by rotating the ratchet until the wire is just
+        held between the spindle and the anvil.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -716,8 +717,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Move the screw forward by rotating the ratchet R till the wire is gently
-        gripped between the screw and the stud.
+      value: Rotate the ratchet to move the spindle forward until it just touches
+        the wire.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -965,8 +966,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Using the Slider, move the screw backwards to make a gap between the
-        stud and the screw enough for the wire to fit in. '
+      value: Using the slider, rotate the circular scale to move the screw backwards
+        and create a gap between the anvil and the spindle large enough for the wire
+        to fit in.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -1091,6 +1093,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cded085d155cde949b60f67a11dbc3bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  version: 2
+  globalVolume: 0
   mode: 2
   size: {x: 10, y: 10, z: 10}
   overrideRendererFilters: 0
@@ -1121,8 +1125,6 @@ MonoBehaviour:
     e33: 0
   cachedHashCode: 0
   fillEmptySpaces: 0
-  version: 2
-  globalVolume: 0
 --- !u!224 &570371483 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8308125967715299549, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
@@ -1593,7 +1595,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slider outside and press the button and change the wire position  '
+      value: Move the slider to move the spindle back, then press the button to place
+        the wire at a different position along its length for the next reading.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -1715,7 +1718,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slide toward inside and note the value '
+      value: Move the slider to rotate the circular scale until the spindle just
+        touches the wire, then note the reading.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1828,7 +1832,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slider outside and press the button and change the wire position  '
+      value: Move the slider to move the spindle back, then press the button to rotate
+        the wire so the next reading is taken in the perpendicular direction.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -1950,7 +1955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -2077,7 +2082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2461,7 +2466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2579,8 +2584,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Move the screw forward by rotating the ratchet R till the wire is gently
-        gripped between the screw and the stud.
+      value: Move the spindle forward by rotating the ratchet until the wire is just
+        held between the spindle and the anvil.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -2870,7 +2875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8308125967715299549, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -65
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 8308125967715299549, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2886,7 +2891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Please Keep It the Resistance box Resistance Between 1.5 to 6 ohms.
+      value: "Set the resistance in the resistance box between 1.5 \u03A9 and 6 \u03A9."
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -3035,7 +3040,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slider outside and press the button and change the wire position  '
+      value: "Move the slider to move the spindle back, then press the Rotate button
+        to turn the wire through 90\xB0 for the reading in the perpendicular direction."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3269,12 +3275,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: So, now we have found the diameter of the wire from which we can find
-        the cross-sectional area of the wire.
+      value: ' Now that we have found the diameter of the wire, we can find its cross-sectional
+        area. Measure the length of the wire using the metre scale and enter it in
+        the table.'
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
-      value: 27.85
+      value: 26.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3634,7 +3641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3740,7 +3747,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Now interchange the positions of known and unknown resistors.
+      value: Now tap 'Interchange' to swap the positions of the resistance box (known
+        resistance) and the wire (unknown resistance) in the gaps of the metre bridge.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3858,8 +3866,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Move the screw forward by rotating the ratchet R till the wire is gently
-        gripped between the screw and the stud.
+      value: Move the spindle forward by rotating the ratchet until the wire is just
+        held between the spindle and the anvil.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -4057,16 +4065,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668220190}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7716020209745453703}
+  m_Father: {fileID: 3964831855476324174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 29, y: 3}
+  m_AnchoredPosition: {x: 79, y: 454.7462}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1668220192
@@ -4205,8 +4213,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Remove a plug or multiple plugs from the resistance box Between 1.5
-        to 6 ohms
+      value: "Remove one or more plugs from the resistance box so that the resistance
+        is between 1.5 \u03A9 and 6 \u03A9."
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4324,7 +4332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Press the Button and place the wire inside the anvil and spindle '
+      value: press the Fix button to place the wire between anvil and the spindle.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4370,8 +4378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 89, y: -289}
-  m_SizeDelta: {x: 146.0954, y: 83.0762}
+  m_AnchoredPosition: {x: 90.412, y: -289}
+  m_SizeDelta: {x: 280.82, y: 83.0762}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808632425
 MonoBehaviour:
@@ -4393,7 +4401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Total
+  m_text: Mean diameter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -4648,7 +4656,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: 'Move the slider outside and press the button and change the wire position  '
+      value: Move the slider to move the spindle back, then press the button to place
+        the wire at a different position along its length for the next reading.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
@@ -4889,13 +4898,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Insert the value for maximum permissible error in measurement of resistance
-        and resistivity of the wire. Please enter the value after rounding off to
-        four decimal places.
+      value: Enter the maximum permissible error in the measurement of resistance.
+        Round off the values to four decimal places.
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_fontSize
-      value: 23.85
+      value: 27.85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5013,7 +5021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9086242031481382896, guid: 7978e406eaf367843944dc63c0dfc44d, type: 3}
       propertyPath: m_text
-      value: Note down the linear scale reading in the observation table.
+      value: Note down the screw gauge reading in the observation table.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31343,7 +31351,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Cross-sectional area of the wire (A) = 1.37 mm^2 = 1.37 x 10^-6 m^2
+  m_text: Cross-sectional area of the wire (A) = 0.567 mm<sup>2</sup> = 0.567 x 10<sup>-6</sup>
+    m<sup>2</sup>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -39152,7 +39161,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Insert The Value In The Table
+  m_text: Enter the resistance box value and the balancing length in the observation
+    table.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -51408,9 +51418,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Mean
-
-'
+  m_text: Mean (mm)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -67151,6 +67159,7 @@ RectTransform:
   - {fileID: 2028672483504453844}
   - {fileID: 8959281208819222153}
   - {fileID: 7893473797458669239}
+  - {fileID: 1668220191}
   m_Father: {fileID: 3292786321047838542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -87259,11 +87268,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, let''s calculate the mean resistance from all the experimental readings
-    and note it in the observation table.
-
-    Populate the Mean resistance column
-    of the observation table number 2.'
+  m_text: Now calculate the mean resistance for each reading and enter it in the
+    Mean Resistance column of Observation Table 2.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -89527,7 +89533,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reading along another direction
+  m_text: Reading along another direction (mm)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -94699,10 +94705,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Now, take the average of all the values of resistance
-
-    S to find the
-    mean value.'
+  m_text: Now, take the average of all the values of resistance S to find the mean
+    value.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -103478,7 +103482,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 188, y: -4}
+  m_AnchoredPosition: {x: -814, y: -4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 4.192043, y: -0.5675801}
 --- !u!1 &6426446648932486718
@@ -114733,7 +114737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Diameter of the wire (d) = 1.32 mm = 1.32 x 10^-3 m
+  m_text: Diameter of the wire (d) = 0.850 mm = 0.850 x 10<sup>-3</sup> m
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -121522,7 +121526,6 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5874762079624483767}
-  - {fileID: 1668220191}
   m_Father: {fileID: 8641194005026383655}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -131123,7 +131126,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reading along one direction
+  m_text: Reading along one direction (mm)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
   m_sharedMaterial: {fileID: -8232536831469020223, guid: 356b1ee212a194b49bed1adb63017c1b, type: 2}
@@ -131157,8 +131160,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_characterHorizontalScale: 1
@@ -132756,8 +132759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -432, y: 173}
-  m_SizeDelta: {x: 480.5444, y: 62.68}
+  m_AnchoredPosition: {x: -362.49, y: 182.29}
+  m_SizeDelta: {x: 423.1, y: 81.251}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &8505489477984707192
 RectTransform:

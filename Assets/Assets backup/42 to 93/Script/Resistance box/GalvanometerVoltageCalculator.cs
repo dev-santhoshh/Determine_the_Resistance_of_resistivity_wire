@@ -24,6 +24,6 @@ public class GalvanometerVoltageCalculator : MonoBehaviour
         // 🔢 Round to ONE decimal
         galvanometerVoltage = Mathf.Round(rawVoltage * 10f) / 10f;
         // 🖥️ Update UI (ONE decimal)
-        valueText.text = galvanometerVoltage.ToString("F1") + " V";
+        valueText.text = galvanometerVoltage.ToString("F1") + " µA";
     }
 }
